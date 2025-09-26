@@ -1,19 +1,24 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Pokemon.Application.CQRS.PokemonCommands;
 using Pokemon.Application.CQRS.PokemonQueries;
-using Pokemon.Domain.Models;
-using Pokemon.Domain.Repositories;
+using Pokemon.Domain.Dtos;
 
 namespace Pokemon.Service.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class PokemonController(IPokemonRepository repository, IMediator mediator) : ControllerBase
+public class PokemonController(IMediator mediator) : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Add(PokemonEntity entity)
+    public async Task<IActionResult> Add(PokemonDto entity)
     {
-        await repository.AddAsync(entity);
+        var result = await mediator.Send(new AddPokemonCommand
+        {
+            PokemonId = entity.PokemonId,
+            Name = entity.Name,
+            Type = entity.Type,
+        });
 
         return StatusCode(200, entity);
     }

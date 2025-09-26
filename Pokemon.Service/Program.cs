@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Pokemon.Application;
+using Pokemon.Application.Services;
 using Pokemon.Domain.Repositories;
 
 namespace Pokemon.Service
@@ -19,6 +20,8 @@ namespace Pokemon.Service
                 cfg.RegisterServicesFromAssemblies(typeof(ApplicationAssemblyReference).Assembly));
 
             builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
+
+            builder.Services.AddHttpClient<IPokemonDataService, PokemonDataService>();
 
             builder.Services.AddControllers();
             
@@ -39,6 +42,9 @@ namespace Pokemon.Service
 
             app.UseAuthorization();
 
+            var scope = app.Services.CreateScope();
+            var pokeService = scope.ServiceProvider.GetRequiredService<IPokemonDataService>();
+            pokeService.GetPokemonsAsync();
 
             app.MapControllers();
 
