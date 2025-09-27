@@ -31,6 +31,16 @@ namespace Pokemon.Service
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowLocalhost", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -49,6 +59,8 @@ namespace Pokemon.Service
             pokeService.GetPokemonsAsync();
 
             app.MapControllers();
+
+            app.UseCors("AllowLocalhost");
 
             app.Run();
         }

@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    font-family: "Montserrat";
+    align-content: center;
+}
+header{
+    background-color: rgb(182, 128, 128);
+    min-height: 15vh;
+    margin: auto;
+}
+main{
+    background-color: rgb(129, 129, 156);
+    min-height: 70vh;
+}
+footer{
+    background-color: rgb(130, 146, 130);
+    min-height: 15vh;
+}
+
+.main-text{
+    text-align: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.container span{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
