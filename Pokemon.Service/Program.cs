@@ -13,8 +13,10 @@ namespace Pokemon.Service
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            //builder.Services.AddDbContext<DataContext>(options =>
+            //    options.UseInMemoryDatabase("TestDb"));
             builder.Services.AddDbContext<DataContext>(options =>
-                options.UseInMemoryDatabase("TestDb"));
+                options.UseSqlite("Data Source=pokemons.db"));
             
             builder.Services.AddMediatR(cfg => 
                 cfg.RegisterServicesFromAssemblies(typeof(ApplicationAssemblyReference).Assembly));

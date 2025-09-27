@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Pokemon.Application.CQRS.PokemonCommands;
 using Pokemon.Application.CQRS.PokemonQueries;
 using Pokemon.Domain.Dtos;
+using Pokemon.Domain.Models;
 
 namespace Pokemon.Service.Controllers;
 
@@ -11,13 +12,12 @@ namespace Pokemon.Service.Controllers;
 public class PokemonController(IMediator mediator) : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Add(PokemonDto entity)
+    public async Task<IActionResult> Add(PokemonEntity entity)
     {
         var result = await mediator.Send(new AddPokemonCommand
         {
-            PokemonId = entity.PokemonId,
+            PokemonId = entity.Id,
             Name = entity.Name,
-            Type = entity.Type,
         });
 
         return StatusCode(200, entity);

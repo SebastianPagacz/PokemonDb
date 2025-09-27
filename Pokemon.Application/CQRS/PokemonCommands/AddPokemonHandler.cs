@@ -10,9 +10,8 @@ public class AddPokemonHandler(IPokemonRepository repository) : IRequestHandler<
     {
         var newPokemon = new PokemonEntity
         {
-            PokemonId = request.PokemonId,
+            Id = request.PokemonId,
             Name = request.Name,
-            Type = request.Type,
         };
 
         await repository.AddAsync(newPokemon);
