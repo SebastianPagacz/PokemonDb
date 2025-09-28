@@ -4,31 +4,56 @@
     align-content: center;
 }
 header{
-    background-color: rgb(182, 128, 128);
     min-height: 15vh;
     margin: auto;
+    border-bottom: 1px solid;
 }
 main{
-    background-color: rgb(129, 129, 156);
     min-height: 70vh;
+    align-items: center;
+    justify-content: center;
 }
 footer{
-    background-color: rgb(130, 146, 130);
     min-height: 15vh;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    border-top: 1px solid;
 }
 
 .main-text{
     text-align: center;
 }
 .container{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     justify-content: center;
     align-items: center;
+    height: 60%;
+    width: 90vh;
 }
-.container span{
+.container div{
     display: flex;
     flex-direction: row;
     gap: 5px;
+    border: 1px solid black;
+    border-radius: 8px;
+    -webkit-box-shadow: 14px 14px 28px -12px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 14px 14px 28px -12px rgba(66, 68, 90, 1);
+    box-shadow: 14px 14px 28px -12px rgba(66, 68, 90, 1);
+    padding: 10px;
+    background-color: rgb(231, 226, 226);
+}
+
+.footer-copy{
+    color: black;
+}
+
+.poke-image{
+    width: 100px;
+    height: 100px;
 }
