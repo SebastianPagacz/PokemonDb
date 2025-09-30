@@ -1,3 +1,6 @@
+const searchInput = document.getElementById("search-input");
+let pokemons = [];
+
 async function getData(){
     const url = "https://localhost:8081/api/Pokemon";
 
@@ -11,7 +14,6 @@ async function getData(){
         }
 
         const result = await response.json();
-        console.log(result);
         
         return result;
     }
@@ -25,6 +27,8 @@ async function renderData(){
     const dataContainer = document.getElementById("container");
     
     for (const item of requestedData){
+        pokemons.push(item.name);
+
         let boxElem = document.createElement("div");
         let image = document.createElement("img");
         let idElem = document.createElement("p");
@@ -46,7 +50,13 @@ async function renderData(){
         boxElem.appendChild(image);
         boxElem.appendChild(idElem);
         boxElem.appendChild(nameElem);
+        boxElem.style = "width: 30vh; height: 10vh"
     }
+    console.log(pokemons);
 }
+
+searchInput.addEventListener("input", (e) => {
+    const value = e.target.value;
+});
 
 renderData();

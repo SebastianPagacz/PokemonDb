@@ -48,6 +48,15 @@ footer{
     padding: 10px;
     background-color: rgb(231, 226, 226);
 }
+.search-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+}
 
 .footer-copy{
     color: black;
@@ -56,4 +65,8 @@ footer{
 .poke-image{
     width: 100px;
     height: 100px;
+}
+
+.search-input{
+    width: 20vh;
 }
